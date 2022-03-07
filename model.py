@@ -8,9 +8,9 @@ from torch.utils.data import TensorDataset,DataLoader
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 
-class OptNPMiner(nn.Module):
+class OptNCMiner(nn.Module):
     def __init__(self, Xshape, headshape, bodyshape, dr=0.1, combine_mode="subtract"):
-        super(OptNPMiner, self).__init__()
+        super(OptNCMiner, self).__init__()
         self.input_parameters={'Xshape':Xshape,'headshape':headshape,'bodyshape':bodyshape,
                                'dr':dr,'combine_mode':combine_mode}
         self.combine_mode=combine_mode
@@ -202,7 +202,7 @@ def saveModel(model,fn):
 def loadModel(fn):
     checkpoint=t.load(fn)
     input_params=checkpoint['params']
-    model = OptNPMiner(**input_params)
+    model = OptNCMiner(**input_params)
 
     model.load_state_dict(checkpoint['model_state_dict'])
     model.support_pos=checkpoint['support_pos']

@@ -4,7 +4,7 @@ import pandas as pd
 import torch as t
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score, confusion_matrix, multilabel_confusion_matrix, roc_auc_score,average_precision_score
-from model import OptNPMiner, saveModel
+from model import OptNCMiner, saveModel
 X=['X%d' % i for i in range(1, 1025)]
 Y='potency'
 label = "SMILES"
@@ -222,7 +222,7 @@ def trainCycle(params, save=True):
 
     support_set=dict(tuple(train_raw.groupby('fn')))
 
-    model = OptNPMiner(len(X), headshape, bodyshape, dr=dr, combine_mode=combine_mode)
+    model = OptNCMiner(len(X), headshape, bodyshape, dr=dr, combine_mode=combine_mode)
     losses, optimizer = model.fit(x_tr, y_tr, valset=(x_val, y_val), support=support_set,
                                   epochs=500, lr=lr, es_thresh = 50)
     if save:
