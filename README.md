@@ -1,6 +1,15 @@
-#### Collecting Data for T2DM
+# OptNCMiner
 
-### 1. download
+OptNCMiner is a machine learning model suitable for predicting ‘optimal natural compound (NC)s’ that modulate disease-specific multi-targets. Built on a structure of SNN, OptNCMiner preserves the advantages of DNN to effectively extract essential features of NCs related to compound-protein interactions. OptNCMiner is validated on its ability with multi-label learning from single positive data on compound-protein interactions, and is also capable of few-shot learning, enabling multi-class classification on NCs using small datasets. We tested OptNCMiner with the discovery of natural sources containing NCs that regulate target proteins associated with type 2 diabetes mellitus (T2DM)-related complications. 
+
+
+
+## Additional guide for collecting NC data from FooDB (Use case scenario)
+
+
+### Collecting Data
+
+#### 1. download
 
 [Downloads](https://foodb.ca/downloads)
 
@@ -8,7 +17,7 @@
 
 ---
 
-### 2. import dump file
+#### 2. import dump file
 
 - decompress foodb_2020_4_7_mysql.tar.gz
 - create db
@@ -25,7 +34,7 @@ mysql -u [userid] -p [password] < {path/foodb_server_dump_2020_4_21}.sql
 
 ---
 
-### 3. extract data
+#### 3. extract data
 
 - search smiles
 
@@ -42,7 +51,7 @@ WHERE t.source_type='Compound' and c.export = 1 and f.export_to_foodb = 1
 
 ---
 
-### 4. add fingerprint
+#### 4. add fingerprint
 
 ```r
 #install.packages('caret')
@@ -72,6 +81,6 @@ write.csv(final, "foodb_compounds_fp.csv",row.names=FALSE)
 
 ---
 
-### 5. rename columns
+#### 5. rename columns
 
 - data..sapply.mols..is.null.. → SMILES
