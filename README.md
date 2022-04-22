@@ -1,6 +1,6 @@
 # OptNCMiner
 
-OptNCMiner is a machine learning model suitable for predicting ‘optimal natural compound (NC)s’ that modulate disease-specific multi-targets. Built on a structure of SNN, OptNCMiner preserves the advantages of DNN to effectively extract essential features of NCs related to compound-protein interactions. OptNCMiner is validated on its ability with multi-label learning from single positive data on compound-protein interactions, and is also capable of few-shot learning, enabling multi-class classification on NCs using small datasets. We tested OptNCMiner with the discovery of natural sources containing NCs that regulate target proteins associated with type 2 diabetes mellitus (T2DM)-related complications. 
+OptNCMiner is a model designed to discover optimal natural compound. 
 
 
 
